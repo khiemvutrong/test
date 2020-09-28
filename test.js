@@ -56,8 +56,8 @@ let arr = [
 const result = arr.reduce((acc, cur) => {
     let item = {};
     let reverseItem = cur.reverse();
-    item['name'] = reverseItem[0];
-    item['num'] = reverseItem[1];
+    item['name'] = reverseItem[0] ? reverseItem[0] : null;
+    item['num'] = reverseItem[1] ? reverseItem[1] : null;
     acc.push(item);
     return acc;
 }, []);
