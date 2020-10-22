@@ -1,65 +1,43 @@
 let arr = [
-    [
-        '130421',
-        '邯郸县',
-        '130400',
-        '邯郸',
-        '3',
-        '0310',
-        '056101',
-        '中国,河北省,邯郸市,邯郸县',
-        '114.53103',
-        '36.59385',
-        'Handan'
-    ],
-    [
-        '130423',
-        '临漳县',
-        '130400',
-        '临漳',
-        '3',
-        '0310',
-        '056600',
-        '中国,河北省,邯郸市,临漳县',
-        '114.6195',
-        '36.33461',
-        'Linzhang'
-    ],
-    [
-        '130424',
-        '成安县',
-        '130400',
-        '成安',
-        '3',
-        '0310',
-        '056700',
-        '中国,河北省,邯郸市,成安县',
-        '114.66995',
-        '36.44411',
-        "Cheng'an"
-    ],
-    [
-        '130425',
-        '大名县',
-        '130400',
-        '大名',
-        '3',
-        '0310',
-        '056900',
-        '中国,河北省,邯郸市,大名县',
-        '115.15362',
-        '36.27994',
-        'Daming'
-    ]
-];
+    [0,1,2,3,4], 
+    [4,3,2,1,0], 
+    [5,6,7,8,9]
+]
 
-const result = arr.reduce((acc, cur) => {
-    let item = {};
-    let reverseItem = cur.reverse();
-    item['name'] = reverseItem[0] ? reverseItem[0] : null;
-    item['num'] = reverseItem[1] ? reverseItem[1] : null;
-    acc.push(item);
-    return acc;
-}, []);
+function deleteRowsColumns(inputMatrix, deleteRows, deleteColumns) {
+    
+   // convert index arr before delete Rows
+   let convertDeleteRows = [];
+   for (let i = 0; i < deleteRows.length; i++) {
+      let numR = i + 1;
+      convertDeleteRows.push(deleteRows[i] - numR)
+   }
+    
+   // convert index arr before delete Columns
+   let convertDeleteColumns = [];
+   for (let i = 0; i < deleteColumns.length; i++) {
+      let numC = i + 1;
+      convertDeleteColumns.push(deleteColumns[i] - numC);
+   }
 
-console.log(result);
+   // action remove rows
+   for (const rmi of convertDeleteRows) {
+      if (rmi >= 0) {
+         inputMatrix.splice(rmi, 1);
+      }
+   }
+    
+   // action remove columns
+   inputMatrix.map(el => {
+      for (const rmi of convertDeleteColumns) {
+         if (rmi >= 0) {
+            el.splice(rmi, 1);
+         }
+      }
+   })
+   
+   // return results
+   return inputMatrix
+}
+
+deleteRowsColumns(arr, [2], [2,5])
