@@ -1,0 +1,50 @@
+/**
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
+function inSoSanh(a,b){
+    a = parseInt(a); // value input a type Number
+    b = parseInt(b); // value input b type Number
+
+    let result = null;
+    
+    if (a === b){
+        result = a + " bang " + b;
+    } else if (a > b) {
+        result = a + " lon hon " + b;
+    } else {
+        result = a + " nho hon " + b;
+    }
+    
+    return result;
+}
+console.log(inSoSanh(1,2));
+
+
+
+/**
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
+function inChanLe(a, b) {
+    a = parseInt(a); // value input a type Number
+    b = parseInt(b); // value input b type Number
+
+    let result = null;
+    if (a % 2 === 0 && b % 2 === 0) {
+        result = a + " va " + b + " la so chan";
+    } else if (a % 2 !== 0 && b % 2 !== 0) {
+        result = a + " va " + b + " la so le";
+    } else {
+        if (a % 2 === 0) {
+            result = a + " la so chan, " + b + " la so le";
+        } else {
+            result = a + " la so le, " + b + " la so chan";
+        }
+    }
+
+    return result;
+}
+console.log(inChanLe(3,2));
